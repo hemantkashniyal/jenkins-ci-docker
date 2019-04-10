@@ -1,4 +1,4 @@
-from jenkinsci/jenkins:2.150-alpine
+from jenkinsci/jenkins:2.150
 MAINTAINER Hemant Kashniyal <hemantkashniyal@gmail.com>
  
 ARG DOCKER_VERSION='18.09.1'
