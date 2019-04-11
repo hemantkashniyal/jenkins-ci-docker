@@ -1,7 +1,5 @@
 from jenkinsci/jenkins:2.150
 MAINTAINER Hemant Kashniyal <hemantkashniyal@gmail.com>
- 
-ARG DOCKER_VERSION='18.09.1'
 
 USER root
 RUN apt-get update -qq \
@@ -11,6 +9,12 @@ RUN add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/debian \
    $(lsb_release -cs) \
    stable"
-RUN apt-get update  -qq \
-    && apt-get install docker-ce=${DOCKER_VERSION}~ce-0~debian -y
+   
+RUN apt-get update  -qq 
+RUN apt-cache policy docker-ce || true
+RUN apt-cache madison docker-ce || true
+
+ARG DOCKER_VERSION='18.09.0'
+
+RUN apt-get install docker-ce=${DOCKER_VERSION}~ce-0~debian -y
 RUN usermod -aG docker jenkins
