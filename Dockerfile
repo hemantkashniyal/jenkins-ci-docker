@@ -16,5 +16,5 @@ RUN apt-cache madison docker-ce || true
 
 ARG DOCKER_VERSION='18.09.0'
 
-RUN apt-get install docker-ce=${DOCKER_VERSION}~ce-0~debian -y
+RUN apt-get install docker-ce=${DOCKER_VERSION}~3-0~debian-stretch -y
 RUN usermod -aG docker jenkins
